@@ -149,7 +149,8 @@
                           </div>
                         </div>
                         <hr class="mb-4">
-                        <button class="btn btn-primary btn-lg btn-block" type="submit" formmethod="post" style="background: #2D3277">Continuar</button>
+                        <a href="<?=BASE_URL?>"><-- Seleccionar otro modelo</a>
+                        <button class="btn btn-primary btn-lg btn-block col-md-3 float-right" type="submit" formmethod="post" style="background: #2D3277">Continuar</button>
                       </form>
                     </div>
                   </div>
