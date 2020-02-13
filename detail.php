@@ -1,3 +1,20 @@
+<?php 
+    session_start();
+    require __DIR__  . '/config.php';
+
+    $validPost = isset($_POST['title']) && isset($_POST['unit']) && isset($_POST['price']) && isset($_SESSION["product"]);
+
+    if($validPost){
+        $_SESSION["product"] = array(
+            'title' => $_POST['title'],
+            'quantity' => $_POST['unit'],
+            'unit_price' => $_POST['price'],
+            'picture_url' => $_POST['img']
+            );
+    }else{
+        header('Location: '.BASE_URL);
+    }
+?>
 <!DOCTYPE html>
 <html class="supports-animation supports-columns svg no-touch no-ie no-oldie no-ios supports-backdrop-filter as-mouseuser" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
@@ -124,13 +141,16 @@
                                             </h3>
                                         </div>
                                         <h3 >
-                                            <?php echo $_POST['price'] ?>
+                                            <?php echo "$" . $_POST['price'] ?>
                                         </h3>
                                         <h3 >
-                                            <?php echo "$" . $_POST['unit'] ?>
+                                            <?php echo "Cantidad: " . $_POST['unit'] ?>
                                         </h3>
                                     </div>
-                                    <button type="submit" class="mercadopago-button" formmethod="post">Pagar</button>
+                                    <form action="<?=BASE_URL ?>/checkout.php">
+                                        <button type="submit" class="mercadopago-button" formmethod="post">Pagar</button>
+                                    </form>
+                                    
                                 </div>
                             </div>
                         </div>
