@@ -11,27 +11,20 @@
         switch($_POST["type"]) {
             case "payment":
                 $payment = MercadoPago\Payment::find_by_id($_GET["data_id"]);
-                print_r($payment);
                 //Guardar información en la base de datos
                 break;
             case "plan":
                 $plan = MercadoPago\Plan::find_by_id($_GET["data_id"]);
-                print_r($plan);
                 //Guardar información en la base de datos
                 break;
             case "subscription":
                 $plan = MercadoPago\Subscription::find_by_id($_GET["data_id"]);
-                print_r($plan);
                 //Guardar información en la base de datos
                 break;
             case "invoice":
                 $plan = MercadoPago\Invoice::find_by_id($_GET["data_id"]);
-                print_r($plan);
                 //Guardar información en la base de datos
                 break;
-            case "test":
-                $plan = MercadoPago\Invoice::find_by_id($_GET["data_id"]);
-                print_r($plan);
         }
     }else{
         header("HTTP/1.0 400 Bad Request");
