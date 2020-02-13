@@ -1,6 +1,12 @@
 <?php 
     session_start();
     require __DIR__  . '/config.php';
+
+    $validPost = isset($_SESSION["product"]["title"]) && isset($_SESSION["product"]["quantity"]) && isset($_SESSION["product"]["unit_price"]) && isset($_SESSION["product"]["picture_url"]);
+
+    if(!$validPost){
+        header('Location: '.BASE_URL);
+    }
 ?>
 
 <!DOCTYPE html>
@@ -97,49 +103,31 @@
                           <div class="col-md-6 mb-3">
                             <label for="firstName">Nombre(s)</label>
                             <input type="text" class="form-control" id="firstName" name="firstName" placeholder="" required="" value="Lalo">
-                            <div class="invalid-feedback">
-                              Valid first name is required.
-                            </div>
                           </div>
                           <div class="col-md-6 mb-3">
                             <label for="lastName">Apellidos</label>
                             <input type="text" class="form-control" id="lastName" name="lastName" placeholder="" required="" value="Landa">
-                            <div class="invalid-feedback">
-                              Valid last name is required.
-                            </div>
                           </div>
                         </div>
 
                         <div class="mb-3">
                           <label for="email">Email </label>
                           <input type="email" class="form-control" id="email" name="email" placeholder="correo@gmail.com" required="" value="t​est_user_98623993@testuser.com">
-                          <div class="invalid-feedback">
-                            Please enter a valid email address for shipping updates.
-                          </div>
                         </div>
 
                         <div class="mb-3">
                           <label for="phone">Teléfono </label>
                           <input type="tel" class="form-control" id="phone" name="phone" placeholder="1234567890" required="" value="5549737300">
-                          <div class="invalid-feedback">
-                            Please enter a valid email address for shipping updates.
-                          </div>
                         </div>
 
                         <div class="mb-3">
                           <label for="address">Dirección</label>
                           <input type="text" class="form-control" id="address" name="address" placeholder="Dirección" required="" value="Insurgentes Sur">
-                          <div class="invalid-feedback">
-                            Please enter your shipping address.
-                          </div>
                         </div>
 
                         <div class="mb-3">
                           <label for="streetNumber">Número de casa</label>
                           <input type="text" class="form-control" id="streetNumber" name="streetNumber" placeholder="Número de casa" required="" value="1602">
-                          <div class="invalid-feedback">
-                            Please enter your shipping address.
-                          </div>
                         </div>
 
                         <div class="row">
@@ -148,25 +136,16 @@
                             <select class="custom-select d-block w-100" id="country" name="country" required="">
                               <option>México</option>
                             </select>
-                            <div class="invalid-feedback">
-                              Please select a valid country.
-                            </div>
                           </div>
                           <div class="col-md-4 mb-3">
                             <label for="state">Estado</label>
                             <select class="custom-select d-block w-100" id="state" name="state" required="">
                               <option>Ciudad de México</option>
                             </select>
-                            <div class="invalid-feedback">
-                              Please provide a valid state.
-                            </div>
                           </div>
                           <div class="col-md-3 mb-3">
                             <label for="zip">Código postal</label>
                             <input type="text" class="form-control" id="zip" name="zip" placeholder="" required="" value="03940">
-                            <div class="invalid-feedback">
-                              Zip code required.
-                            </div>
                           </div>
                         </div>
                         <hr class="mb-4">
